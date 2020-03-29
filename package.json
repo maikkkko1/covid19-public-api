@@ -1,0 +1,52 @@
+{
+  "name": "covid19-public-api",
+  "version": "1.0.0",
+  "description": "Public api for COVID-19 stats.",
+  "main": "./server.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js --ignore __tests__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maikkkko1/covid19-public-api.git"
+  },
+  "keywords": [
+    "public",
+    "api",
+    "covid19",
+    "covid-19",
+    "coronavirus",
+    "corona",
+    "virus",
+    "coronavirus",
+    "api",
+    "corona",
+    "virus",
+    "api",
+    "covid19",
+    "api",
+    "covid-19",
+    "api"
+  ],
+  "author": "Maikon Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maikkkko1/covid19-public-api/issues"
+  },
+  "homepage": "https://github.com/maikkkko1/covid19-public-api#readme"
+}
