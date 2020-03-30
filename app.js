@@ -1,6 +1,7 @@
 const Routes = require("./src/routes-v1/routes");
 const ScrapingController = require("./src/controllers/ScrapingController");
 
+const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 
@@ -29,6 +30,12 @@ class AppController {
     this.express.use(express.urlencoded({ extended: false }));
 
     this.express.use("/api/v1", new Routes().loadRoutes());
+
+    this.express.use("/", (req, res) => {
+      fs.readFile("./src/views/index/index.html", "utf8", (err, text) => {
+        res.send(text);
+      });
+    });
   }
 }
 

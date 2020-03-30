@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <link href="index.css" rel="stylesheet" />
+    <title>COVID-19 CORONAVIRUS PUBLIC API - V1</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+      <a class="navbar-brand" href="#">COVID-19</a>
+      <div class=" navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link text-white"
+              href="https://github.com/maikkkko1/covid19-public-api"
+              target="_blank"
+              >Github</a
+            >
+          </li>
+        </ul>
+        <span class="navbar-text font-weight-bold text-white">
+          CORONAVIRUS PUBLIC API - V1
+        </span>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <h1 class="section-title">About</h1>
+      <div class="container row about-container-align">
+        <div class="col-md-6 container">
+          <img src="../assets/img/doctor_2x.jpg" alt="" width="80%" />
+        </div>
+
+        <div class="col-md-6 container mt-4">
+          <p class="about-text">
+            A source of data on the growth of COVID-19 worldwide, using the
+            method of "web scraping", the API manages to return updated data on
+            the whole world and by countries every minute.
+          </p>
+
+          <p class="about-text">
+            The project is completely open-source and open to contributions.
+          </p>
+
+          <p class="about-text">
+            If you are interested in contributing to the project or have a
+            problem using it, please contribute or report your problem in our
+            <a
+              target="_blank"
+              href="https://github.com/maikkkko1/covid19-public-api"
+              >GitHub</a
+            >
+            repository.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+      <h1 class="section-title">Documentation</h1>
+      <div class="container docs-container-align mt-4">
+        <h5>Available requests</h5>
+
+        <p>
+          Base URL:
+          <code>https://covid19-public-api.herokuapp.com/api/v1/</code>
+        </p>
+
+        <p>
+          <span class="text-success mr-2">GET</span>
+          <code>
+            /status
+          </code>
+        </p>
+        <span
+          >Returns data from all over the world and from all countries.<br />
+          Response example:<br />
+        </span>
+
+        <img
+          class="example-img mt-4 img-fluid"
+          src="../assets/img/covid-19-request-all.png"
+          alt=""
+        />
+
+        <p class="mt-5">
+          <span class="text-success mr-2">GET</span>
+          <code>
+            /status/{countryName}
+          </code>
+        </p>
+        <span
+          >Returns the data of the indicated country, if the country has a
+          compound name, it must be passed without any spaces, example: <br />
+          Bosnia and Herzegovina = BosniaandHerzegovina
+          <br /><br />
+          Country names must always be given in English.
+          <br /><br />
+          Response example for
+          <code>/status/hongkong</code> request:<br />
+        </span>
+
+        <img
+          class="example-img mt-4"
+          src="../assets/img/covid-19-request-hongkong.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </body>
+</html>
