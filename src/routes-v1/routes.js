@@ -1,6 +1,5 @@
 const express = require("express");
 const StatusController = require("../controllers/StatusController");
-const UpdateController = require("../controllers/UpdateController");
 
 class Routes {
   constructor() {
@@ -20,8 +19,6 @@ class Routes {
       "/status/:country",
       StatusController.getStatusByCountry.bind(this)
     );
-
-    this.router.get("/update", UpdateController.handleUpdate.bind(this));
   }
 }
 
