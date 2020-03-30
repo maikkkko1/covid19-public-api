@@ -4,8 +4,6 @@ const siteUrl = "https://www.worldometers.info/coronavirus/";
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-const StatusController = require("../controllers/StatusController");
-
 class ScrapingController {
   static async scrapPage() {
     const $ = await this.fetchData();
@@ -32,7 +30,7 @@ class ScrapingController {
       status_by_country: totalsCountries
     };
 
-    StatusController.saveStatus(statusObject);
+    return statusObject;
   }
 
   static async scrapCountries($) {

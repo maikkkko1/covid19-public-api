@@ -1,16 +1,26 @@
 "use strict";
 
+const ScrapingController = require("./ScrapingController");
+
 const fs = require("fs");
 
 const status = require("../data/status.json");
 const statusPath = "./src/data/status.json";
 
 class StatusController {
-  static getStatus(req, res) {
+  static async getStatus(req, res) {
+    const data = await ScrapingController.scrapPage();
+
+    await saveStatus(data);
+
     return res.status(200).send(status);
   }
 
-  static getStatusByCountry(req, res) {
+  static async getStatusByCountry(req, res) {
+    const data = await ScrapingController.scrapPage();
+
+    await saveStatus(data);
+
     let country = req.params.country;
     country = country.replace(new RegExp(" ", "g"), "");
     country = country.toLowerCase();
@@ -30,16 +40,16 @@ class StatusController {
 
     return res.status(500).send({ error: "Internal error." });
   }
-
-  static saveStatus(statusData) {
-    this.writeData(statusPath, statusData);
-  }
-
-  static writeData(path, data) {
-    fs.writeFile(path, JSON.stringify(data), err => {
-      if (err) throw err;
-    });
-  }
 }
+
+const saveStatus = data => {
+  return new Promise(resolve => {
+    fs.writeFile(statusPath, JSON.stringify(data), err => {
+      if (err) throw err;
+
+      resolve(true);
+    });
+  });
+};
 
 module.exports = StatusController;
