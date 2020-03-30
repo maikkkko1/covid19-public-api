@@ -1,6 +1,6 @@
 const express = require("express");
 const StatusController = require("../controllers/StatusController");
-const ScrapingController = require("../controllers/ScrapingController");
+const UpdateController = require("../controllers/UpdateController");
 
 class Routes {
   constructor() {
@@ -14,10 +14,14 @@ class Routes {
   }
 
   definePublicRoutes() {
-    this.router.get("/status", async (req, res) => {
-      const b = await new ScrapingController().scrapPage();
-      res.send(b);
-    });
+    this.router.get("/status", StatusController.getStatus.bind(this));
+
+    this.router.get(
+      "/status/:country",
+      StatusController.getStatusByCountry.bind(this)
+    );
+
+    this.router.get("/update", UpdateController.handleUpdate.bind(this));
   }
 }
 

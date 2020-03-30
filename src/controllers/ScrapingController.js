@@ -4,12 +4,10 @@ const siteUrl = "https://www.worldometers.info/coronavirus/";
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-class ScrapingController {
-  constructor() {
-    this.status = {};
-  }
+const StatusController = require("../controllers/StatusController");
 
-  async scrapPage() {
+class ScrapingController {
+  static async scrapPage() {
     const $ = await this.fetchData();
 
     const totals = await this.scrapTotals($);
@@ -34,10 +32,10 @@ class ScrapingController {
       status_by_country: totalsCountries
     };
 
-    return statusObject;
+    StatusController.saveStatus(statusObject);
   }
 
-  async scrapCountries($) {
+  static async scrapCountries($) {
     return new Promise(resolve => {
       const totals = $("tr");
 
@@ -65,7 +63,7 @@ class ScrapingController {
     });
   }
 
-  async scrapTotals($) {
+  static async scrapTotals($) {
     return new Promise(resolve => {
       const totals = $("tr.total_row").first();
 
@@ -91,7 +89,7 @@ class ScrapingController {
     });
   }
 
-  formatCountriesData(data) {
+  static formatCountriesData(data) {
     let formattedData = [];
 
     data.map((countryData, countryIndex) => {
@@ -140,14 +138,10 @@ class ScrapingController {
     return formattedData;
   }
 
-  async fetchData() {
+  static async fetchData() {
     const result = await axios.get(siteUrl);
 
     return cheerio.load(result.data);
-  }
-
-  processElement(el) {
-    return el.text().trim();
   }
 }
 
